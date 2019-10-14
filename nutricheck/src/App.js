@@ -1,13 +1,14 @@
 import React from "react";
 import { Route } from "react-router-dom";
-import Options from "../src/components/Options";
-import "./App.css";
+
+import Options from "./components/Options";
+import Headbar from "./components/Headbar";
 
 class App extends React.Component {
   render() {
     return (
       <div>
-        {/* <Headbar /> */}
+        <Headbar />
         <div>
           <Route path="/" component={Options} />
         </div>
