@@ -19,25 +19,40 @@ const Form = styled.form`
 
 class Options extends React.Component {
   state = {
-    fiber: "low",
     fat: "low",
-    carbohydrate: "low",
+    mineral: "low",
+    fiber: "low",
     protein: "low",
-    mineral: "low"
+    carbohydrate: "low"
   };
   handleChange = e => {
-    console.log("boo", e);
-    // this.state[e.target.id] == "low"
-    //   ? this.setState({
-    //       [e.target.id]: "high"
-    //     })
-    //   : this.setState({
-    //       [e.target.id]: "low"
-    //     });
-    // console.log("boo");
+    // console.log("boo", e.target.id);
+    console.log(`${e.target.id}`, this.state[e.target.id]);
+    // console.log(document.writeln(this.state.fat));
+    this.state[e.target.id] == "low"
+      ? this.setState({
+          [e.target.id]: "high"
+        })
+      : this.setState({
+          [e.target.id]: "low"
+        });
+
+    // this.setState({ [e.target.id]: "high" });
+
+    console.log(`${e.target.id}`, this.state[e.target.id]);
   };
 
-  handleSubmit = e => {};
+  handleSubmit = e => {
+    e.preventDefault();
+    this.setState({
+      fiber: "high",
+      fat: "high",
+      carbohydrate: "high",
+      protein: "high",
+      mineral: "high"
+    });
+    console.log("booooo", this.state);
+  };
 
   render() {
     return (
@@ -83,7 +98,7 @@ class Options extends React.Component {
               <button className="waves-effect btn">Show Info</button>
             </div>
           </Form> */}
-        <Form>
+        <Form onSubmit={this.handleSubmit}>
           <div>
             <Switch id={"fat"} name={"Fat"} func={this.handleChange} />
           </div>
@@ -98,10 +113,13 @@ class Options extends React.Component {
           </div>
           <div>
             <Switch
-              id={"carbohydrates"}
-              name={"Carbohydrates"}
+              id={"carbohydrate"}
+              name={"Carbohydrate"}
               func={this.handleChange}
             />
+          </div>
+          <div className="input-field">
+            <button className="waves-effect btn">Show Info</button>
           </div>
         </Form>
       </StyledContainer>
