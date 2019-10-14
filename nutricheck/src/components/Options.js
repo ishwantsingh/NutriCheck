@@ -15,6 +15,9 @@ const Form = styled.form`
   height: 100%;
   display: flex;
   justify-content: space-around;
+  #reset-but {
+    opacity: 0;
+  }
 `;
 
 class Options extends React.Component {
@@ -45,13 +48,18 @@ class Options extends React.Component {
   handleSubmit = e => {
     e.preventDefault();
     this.setState({
-      fiber: "high",
-      fat: "high",
-      carbohydrate: "high",
-      protein: "high",
-      mineral: "high"
+      fiber: "low",
+      fat: "low",
+      carbohydrate: "low",
+      protein: "low",
+      mineral: "low"
     });
     console.log("booooo", this.state);
+  };
+
+  reset = () => {
+    //console.log(document.getElementById("reset-but"));
+    document.getElementById("reset-but").click();
   };
 
   render() {
@@ -119,7 +127,11 @@ class Options extends React.Component {
             />
           </div>
           <div className="input-field">
-            <button className="waves-effect btn">Show Info</button>
+            <button className="waves-effect btn" onClick={this.reset}>
+              Show Info
+            </button>
+            <br />
+            <button type="reset" id="reset-but" />
           </div>
         </Form>
       </StyledContainer>
