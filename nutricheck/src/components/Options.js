@@ -26,10 +26,15 @@ class Options extends React.Component {
     mineral: "low"
   };
   handleChange = e => {
-    this.setState({
-      [e.target.id]: e.target.value
-    });
-    console.log("boo");
+    console.log("boo", e);
+    // this.state[e.target.id] == "low"
+    //   ? this.setState({
+    //       [e.target.id]: "high"
+    //     })
+    //   : this.setState({
+    //       [e.target.id]: "low"
+    //     });
+    // console.log("boo");
   };
 
   handleSubmit = e => {};
@@ -80,19 +85,23 @@ class Options extends React.Component {
           </Form> */}
         <Form>
           <div>
-            <Switch id={"fat"} name={"Fat"} />
+            <Switch id={"fat"} name={"Fat"} func={this.handleChange} />
           </div>
           <div>
-            <Switch id={"mineral"} name={"Mineral"} />
+            <Switch id={"mineral"} name={"Mineral"} func={this.handleChange} />
           </div>
           <div>
-            <Switch id={"fiber"} name={"Fiber"} />
+            <Switch id={"fiber"} name={"Fiber"} func={this.handleChange} />
           </div>
           <div>
-            <Switch id={"protein"} name={"Protein"} />
+            <Switch id={"protein"} name={"Protein"} func={this.handleChange} />
           </div>
           <div>
-            <Switch id={"carbohydrates"} name={"Carbohydrates"} />
+            <Switch
+              id={"carbohydrates"}
+              name={"Carbohydrates"}
+              func={this.handleChange}
+            />
           </div>
         </Form>
       </StyledContainer>
