@@ -9,15 +9,31 @@ const StyledContainer = styled.div`
   display: flex;
   justify-content: center;
 `;
-class Options extends React.Component {
-  // state = {
-  //     vitamin: "",
-  //     vitamin: "",
-  //     vitamin: "",
-  //     vitamin: "",
-  //     vitamin: "",
 
-  // }
+const Form = styled.form`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-around;
+`;
+
+class Options extends React.Component {
+  state = {
+    fiber: "low",
+    fat: "low",
+    carbohydrate: "low",
+    protein: "low",
+    mineral: "low"
+  };
+  handleChange = e => {
+    this.setState({
+      [e.target.id]: e.target.value
+    });
+    console.log("boo");
+  };
+
+  handleSubmit = e => {};
+
   render() {
     return (
       <StyledContainer>
@@ -62,30 +78,23 @@ class Options extends React.Component {
               <button className="waves-effect btn">Show Info</button>
             </div>
           </Form> */}
-        <div>
-          <span>Vitamin</span>
-          <Switch />
-        </div>
-        <div>
-          <span>Mineral</span>
-          <Switch />
-        </div>
-        <div>
-          <span>Fat</span>
-          <Switch />
-        </div>
-        <div>
-          <span>Fiber</span>
-          <Switch />
-        </div>
-        <div>
-          <span>Protien</span>
-          <Switch />
-        </div>
-        <div>
-          <span>Carbohydrates</span>
-          <Switch />
-        </div>
+        <Form>
+          <div>
+            <Switch id={"fat"} name={"Fat"} />
+          </div>
+          <div>
+            <Switch id={"mineral"} name={"Mineral"} />
+          </div>
+          <div>
+            <Switch id={"fiber"} name={"Fiber"} />
+          </div>
+          <div>
+            <Switch id={"protein"} name={"Protein"} />
+          </div>
+          <div>
+            <Switch id={"carbohydrates"} name={"Carbohydrates"} />
+          </div>
+        </Form>
       </StyledContainer>
     );
   }
