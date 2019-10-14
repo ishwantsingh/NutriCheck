@@ -32,7 +32,7 @@ class Options extends React.Component {
     // console.log("boo", e.target.id);
     console.log(`${e.target.id}`, this.state[e.target.id]);
     // console.log(document.writeln(this.state.fat));
-    this.state[e.target.id] == "low"
+    this.state[e.target.id] === "low"
       ? this.setState({
           [e.target.id]: "high"
         })
