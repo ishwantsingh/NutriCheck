@@ -1,7 +1,9 @@
 import React from "react";
 import styled from "styled-components";
+import { connect } from "react-redux";
 
 import Switch from "./Switch";
+import getInfo from "../state/actions/actionCreators";
 
 const StyledContainer = styled.div`
   width: 100%;
@@ -26,7 +28,8 @@ class Options extends React.Component {
     mineral: "low",
     fiber: "low",
     protein: "low",
-    carbohydrate: "low"
+    carbohydrate: "low",
+    calorie: "low"
   };
   handleChange = e => {
     // console.log("boo", e.target.id);
@@ -47,12 +50,21 @@ class Options extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault();
+    this.props.getInfo(
+      this.state.fat,
+      this.state.fiber,
+      this.state.protein,
+      this.state.carbohydrate,
+      this.state.mineral,
+      this.state.calorie
+    );
     this.setState({
       fiber: "low",
       fat: "low",
       carbohydrate: "low",
       protein: "low",
-      mineral: "low"
+      mineral: "low",
+      calorie: "low"
     });
     console.log("booooo", this.state);
   };
@@ -126,6 +138,9 @@ class Options extends React.Component {
               func={this.handleChange}
             />
           </div>
+          <div>
+            <Switch id={"calorie"} name={"Calorie"} func={this.handleChange} />
+          </div>
           <div className="input-field">
             <button className="waves-effect btn" onClick={this.reset}>
               Show Info
@@ -139,4 +154,14 @@ class Options extends React.Component {
   }
 }
 
-export default Options;
+const mapDispatchToProps = dispatch => {
+  return {
+    getInfo: (fat, fiber, protein, carbohydrate, mineral, calorie) =>
+      dispatch(getInfo(fat, fiber, protein, carbohydrate, mineral, calorie))
+  };
+};
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(Options);
