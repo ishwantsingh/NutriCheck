@@ -10,7 +10,7 @@ class App extends React.Component {
       <div>
         <Headbar />
         <div>
-          <Route path="/" component={Options} />
+          <Route exact path="/" component={Options} />
         </div>
       </div>
     );
